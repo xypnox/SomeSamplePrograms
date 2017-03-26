@@ -49,7 +49,7 @@ class Stack {
 	void traverse() {
 		Node *temp = top;
 
-		cout << " Stack : [ ";
+		cout <<  endl << " Stack : [ ";
 
 		while (temp != NULL) {
 			cout << temp -> num << " ";
@@ -58,6 +58,16 @@ class Stack {
 		}
 
 		cout << "]" << endl;
+	}
+
+	void eraser() {
+		Node *temp = top, *xr;
+
+		while (temp!= NULL) {
+			xr = temp;
+			delete xr;
+			temp = temp -> Next;
+		}
 	}
 };
 
@@ -71,17 +81,37 @@ int main() {
 
 
 	do {
+		cout << endl;
 		cout << " Watt do ya wanna do" << endl;
 		cout << " i: insert number" << endl;
 		cout << " d: delete top element" << endl;
 		cout << " v: view stack" << endl;
-		cout << " x: close app" << endl;
+		cout << " q: close app" << endl;
 
 		cout << " >>";
 		cin >> com;
 
 		switch (com) {
 			case 'i' :
+				int z;
+				cout << endl << "Enter number to be inserted" << endl;
+				cin >> z;
+				stk.push(z);
+			break;
+			case 'd' :
+				stk.pop();
+			break;
+			case 'v' :
+				stk.traverse();
+			break;
+			case 'q' :
+				stk.eraser();
+				return 0;
+			break;
+			default :
+				cout << endl << "Monkey Monkey Type Donkey"<< endl;
+		}
+	} while (com != 'q');
 
 
 	return 0;
